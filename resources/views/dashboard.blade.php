@@ -13,7 +13,7 @@
 
                     <div class="dashboard">
                         <ul>
-                            <li><a href="{{route('blog.create')}}">Create Post</a></li>
+                            <li><a href="{{route('post.create')}}">Create Post</a></li>
                             <li><a href="{{route('categories.create')}}">Create Category</a></li>
                             <li><a href="{{route('categories.index')}}">Categories List</a></li>
                         </ul>

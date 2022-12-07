@@ -15,7 +15,7 @@
     @endsection
 
     @section('main')
-    <section id="about" class="about-section section-padding bd-bottom" data-scroll-index="1">
+    <section id="about" class="about-section section-padding bd-bottom " data-scroll-index="1">
         <p class="time-and-author">
             {{$post->created_at->diffForHumans()}}
             <span>Written By {{$post->user->name}}</span>
@@ -27,12 +27,12 @@
             <div class="card-body">
 
                 <p class="card-text">{{$post->body}}</p>
-            
+
             </div>
         </div>
 </div>
 </section>
-<section class="recommended">
+<section class="recommended text-center">
     <p>Related</p>
     <div class="recommended-cards">
         @foreach ($relatedPosts as $relatedPost )

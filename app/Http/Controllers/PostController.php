@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -27,18 +28,11 @@ class PostController extends Controller
         $categories = Category::all();
 
         return view('posts.blog', compact('posts', 'categories'));
+
+
     }
-
-
-
-    public function create(){
-        $categories = Category::all();
-        return view('posts.create', compact('categories'));
-    }
-
-
     public function store(Request $request){
-        
+
        $request->validate([
            'title' => 'required',
            'description' => 'required',
@@ -46,11 +40,11 @@ class PostController extends Controller
            'body' => 'required',
            'category_id' => 'required'
        ]);
-       
+
        $title = $request->input('title');
        $description = $request->input('description');
        $category_id = $request->input('category_id');
-       
+
        if(Post::latest()->first() !== null){
         $postId = Post::latest()->first()->id + 1;
        } else{
@@ -74,7 +68,7 @@ class PostController extends Controller
        $post->imagePath = $imagePath;
 
        $post->save();
-       
+
        return redirect()->back()->with('status', 'Post Created Successfully');
     }
 
@@ -95,26 +89,26 @@ class PostController extends Controller
             'image' => 'required | image',
             'body' => 'required'
         ]);
-        
+
         $title = $request->input('title');
         $description = $request->input('description');
- 
+
         $postId = $post->id;
         $slug = Str::slug($title, '-') . '-' . $postId;
         $body = $request->input('body');
- 
+
         //File upload
         $imagePath = 'storage/' . $request->file('image')->store('postsImages', 'public');
- 
-        
+
+
         $post->title = $title;
         $post->description = $description;
         $post->slug = $slug;
         $post->body = $body;
         $post->imagePath = $imagePath;
- 
+
         $post->save();
-        
+
         return redirect()->back()->with('status', 'Post Edited Successfully');
     }
 

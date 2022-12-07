@@ -29,7 +29,7 @@
     <div class="dl-fixed-sidebar dl-sidebar-left">
         <div class="dl-header-container">
             <div class="logo">
-                {{--  <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2>  --}}
+                {{-- <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2> --}}
             </div>
             <div class="dl-burger-menu">
                 <div class="dl-line-menu dl-line-half dl-first-line"></div>
@@ -38,14 +38,25 @@
             </div>
             <nav class="dl-menu-fixed">
                 <ul>
-                    <li><a class="" href="{{ route('post.index') }}">Home</a></li>
-                    <li><a class="" href="{{ route('welcome.index') }}">About us</a></li>
-                    <li><a class="" href="{{ route('login') }}">Login</a></li>
-                    <li><a class="" href="{{ route('register') }}">Register</a></li>
-                    <li><a class="" href="{{ route('profile.update') }}">Update profile</a></li>
-                    <li><a class="" href="{{ route('post.index') }}">Blog</a></li>
-                    <li><a class="" href="{{ route('contact.index') }}">Contacts</a></li>
-                    <li><a class="" href="{{ route('logout') }}">Logout</a></li>
+
+                    <li><a class="{{ Request::routeIs('welcome.index') ? 'active' : '' }}" href="{{ route('welcome.index') }}">Home</a></li>
+                    <li><a class="{{ Request::routeIs('post.index') ? 'active' : '' }}" href="{{ route('post.index') }}">Blog</a></li>
+                    <li><a class="{{ Request::routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">About</a>
+                    </li>
+                    <li><a class="{{ Request::routeIs('contact.index') ? 'active' : '' }}" href="{{ route('contact.index') }}">Contact</a></li>
+                    @guest
+                    <li><a class="{{ Request::routeIs('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li><a class="{{ Request::routeIs('register') ? 'active' : '' }}" href="{{ route('register') }}">Register</a></li>
+                    @endguest
+
+                    @auth
+                    <li><a class="{{ Request::routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a></li>
+                    <li><a class="{{ Request::routeIs('profile.update') ? 'active' : '' }}" href="{{ route('profile.update') }}">Settings</a></li>
+                    <li><a class="{{ Request::routeIs('password.reset') ? 'active' : '' }}" href="{{ route('password.reset') }}">Reset Password</a></li>
+                    <li><a class="{{ Request::routeIs('logout') ? 'active' : '' }}" href="{{ route('logout') }}">Log out</a></li>
+                    @endauth
+
                 </ul>
             </nav>
         </div>
