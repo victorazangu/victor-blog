@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,30 +19,32 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+// Using controller
+
 // To welcome page
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 
 // To blog page
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog', [BlogController::class, 'index'])->name('post.index');
 
 // To create blog post
-Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+Route::get('/blog/create', [BlogController::class, 'create'])->name('post.create');
 
 // To single blog post
-Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('post.show');
 
 
 // To edit single blog post
-Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])->name('post.edit');
 
 // To update single blog post
-Route::put('/blog/{post}', [BlogController::class, 'update'])->name('blog.update');
+Route::put('/blog/{post}', [BlogController::class, 'update'])->name('post.update');
 
 // To delete single blog post
-Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('blog.destroy');
+Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('post.destroy');
 
 // To store blog post to the DB
-Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+Route::post('/blog', [BlogController::class, 'store'])->name('post.store');
 
 // To about page
 Route::get('/about', function(){
@@ -68,4 +70,14 @@ Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
