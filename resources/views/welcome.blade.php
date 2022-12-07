@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="css/owl.theme.default.min.css" />
     <link rel="stylesheet" href="css/main.css" />
 </head>
-<body>
+<body class="m-2">
 
     <div class="site-preloader-wrap">
         <div class="spinner"></div>
@@ -39,18 +39,18 @@
             <nav class="dl-menu-fixed">
                 <ul>
                     <li><a href="#home" data-scroll-nav="0">Home</a></li>
-                    <li><a href="#home" data-scroll-nav="0">Login</a></li>
-                    <li><a href="#services" data-scroll-nav="1">About Me</a></li>
-                    <li><a href="#about" data-scroll-nav="2">Resume</a></li>
-                    <li><a href="#services" data-scroll-nav="3">Services</a></li>
-                    <li><a href="#portfolios" data-scroll-nav="4">Portfolios</a></li>
+                    <li><a href="#login" data-scroll-nav="1">Login</a></li>
+                    <li><a href="#register" data-scroll-nav="2">Register</a></li>
+                    <li><a href="#about" data-scroll-nav="3">Resume</a></li>
+                    <li><a href="#services" data-scroll-nav="4">Services</a></li>
+                    <li><a href="#portfolios" data-scroll-nav="5">Logout</a></li>
                     <li><a href="#contact" data-scroll-nav="6">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
-    <div class="dl-side-content">
+    <div class="dl-side-content ">
         <div class="content-lines-wrapper">
             <div class="content-lines-inner">
                 <div class="content-lines"></div>
