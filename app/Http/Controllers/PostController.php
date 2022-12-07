@@ -10,6 +10,9 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+
+
+
     public function index(Request $request){
         if($request->search){
             $posts = Post::where('title', 'like', '%' . $request->search . '%')
@@ -26,21 +29,26 @@ class PostController extends Controller
         return view('posts.blog', compact('posts', 'categories'));
     }
 
+
+
     public function create(){
         $categories = Category::all();
-        return view('blogPosts.create-blog-post', compact('categories'));
+        return view('posts.create', compact('categories'));
     }
+
 
     public function store(Request $request){
         
        $request->validate([
            'title' => 'required',
+           'description' => 'required',
            'image' => 'required | image',
            'body' => 'required',
            'category_id' => 'required'
        ]);
        
        $title = $request->input('title');
+       $description = $request->input('description');
        $category_id = $request->input('category_id');
        
        if(Post::latest()->first() !== null){
@@ -58,6 +66,7 @@ class PostController extends Controller
 
        $post = new Post();
        $post->title = $title;
+       $post->description = $description;
        $post->category_id = $category_id;
        $post->slug = $slug;
        $post->user_id = $user_id;
@@ -73,7 +82,7 @@ class PostController extends Controller
         if(auth()->user()->id !== $post->user->id){
             abort(403);
         }
-        return view('blogPosts.edit-blog-post', compact('post'));
+        return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post){
@@ -82,11 +91,13 @@ class PostController extends Controller
         }
         $request->validate([
             'title' => 'required',
+            'description' => 'description',
             'image' => 'required | image',
             'body' => 'required'
         ]);
         
         $title = $request->input('title');
+        $description = $request->input('description');
  
         $postId = $post->id;
         $slug = Str::slug($title, '-') . '-' . $postId;
@@ -97,6 +108,7 @@ class PostController extends Controller
  
         
         $post->title = $title;
+        $post->description = $description;
         $post->slug = $slug;
         $post->body = $body;
         $post->imagePath = $imagePath;
@@ -116,7 +128,7 @@ class PostController extends Controller
         $category = $post->category;
 
         $relatedPosts = $category->posts()->where('id', '!=', $post->id)->latest()->take(3)->get();
-        return view('blogPosts.single-blog-post', compact('post', 'relatedPosts'));
+        return view('posts.show', compact('post', 'relatedPosts'));
     }
 
     public function destroy(Post $post){
