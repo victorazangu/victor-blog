@@ -29,7 +29,7 @@
     <div class="dl-fixed-sidebar dl-sidebar-left">
         <div class="dl-header-container">
             <div class="logo">
-                <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2>
+                {{--  <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2>  --}}
             </div>
             <div class="dl-burger-menu">
                 <div class="dl-line-menu dl-line-half dl-first-line"></div>
@@ -38,13 +38,13 @@
             </div>
             <nav class="dl-menu-fixed">
                 <ul>
-                    <li><a class="" href="{{ route('post') }}">Home</a></li>
-                    <li><a class="" href="{{ route('home') }}">About us</a></li>
+                    <li><a class="" href="{{ route('post.index') }}">Home</a></li>
+                    <li><a class="" href="{{ route('welcome.index') }}">About us</a></li>
                     <li><a class="" href="{{ route('login') }}">Login</a></li>
                     <li><a class="" href="{{ route('register') }}">Register</a></li>
                     <li><a class="" href="{{ route('profile.update') }}">Update profile</a></li>
-                    <li><a class="" href="{{ route('post') }}">Blog</a></li>
-                    <li><a class="" href="{{ route('contact') }}">Contacts</a></li>
+                    <li><a class="" href="{{ route('post.index') }}">Blog</a></li>
+                    <li><a class="" href="{{ route('contact.index') }}">Contacts</a></li>
                     <li><a class="" href="{{ route('logout') }}">Logout</a></li>
                 </ul>
             </nav>

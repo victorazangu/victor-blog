@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,30 +25,30 @@ use Illuminate\Support\Facades\Route;
 // Using controller
 
 // To welcome page
-Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
+Route::get('/', [HomeController::class, 'index'])->name('welcome.index');
 
 // To blog page
-Route::get('/blog', [BlogController::class, 'index'])->name('post.index');
+Route::get('/post', [PostController::class, 'index'])->name('post.index');
 
 
 // To create blog post
-Route::get('/blog/create', [BlogController::class, 'create'])->name('post.create');
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
 
 // To single blog post
-Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('post.show');
+Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post.show');
 
 
 // To edit single blog post
-Route::get('/blog/{post}/edit', [BlogController::class, 'edit'])->name('post.edit');
+Route::get('/post/{post}/edit', [PostController::class, 'edit'])->name('post.edit');
 
 // To update single blog post
-Route::put('/blog/{post}', [BlogController::class, 'update'])->name('post.update');
+Route::put('/post/{post}', [PostController::class, 'update'])->name('post.update');
 
 // To delete single blog post
-Route::delete('/blog/{post}', [BlogController::class, 'destroy'])->name('post.destroy');
+Route::delete('/blog/{post}', [PostController::class, 'destroy'])->name('post.destroy');
 
 // To store blog post to the DB
-Route::post('/blog', [BlogController::class, 'store'])->name('post.store');
+Route::post('/blog', [PostController::class, 'store'])->name('post.store');
 
 // To about page
 Route::get('/about', function(){

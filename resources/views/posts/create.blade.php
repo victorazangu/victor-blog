@@ -1,55 +1,65 @@
 @extends('layout')
 
+@section('header')
+
+<h1 class="text-center">Create post</h1>
+@endsection
+
 @section('main')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Create Post') }}</div>
 
-<main class="container" style="background-color: #fff;">
-    <section id="contact-us">
-        <h1 style="padding-top: 50px;">Create New Post!</h1>
-        @include('includes.flash-message')
-        <!-- Contact Form -->
-        <div class="contact-form">
-            <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
-                @csrf
-                <!-- Title -->
-                <label for="title"><span>Title</span></label>
-                <input type="text" id="title" name="title" value="{{ old('title') }}" />
-                @error('title')
-                    {{-- The $attributeValue field is/must be $validationRule --}}
-                    <p style="color: red; margin-bottom:25px;">{{ $message }}</p>
-                @enderror
-                <!-- Image -->
-                <label for="image"><span>Image</span></label>
-                <input type="file" id="image" name="image" />
-                @error('image')
-                    {{-- The $attributeValue field is/must be $validationRule --}}
-                    <p style="color: red; margin-bottom:25px;">{{ $message }}</p>
-                @enderror
+                <div class="card-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
 
-                <!-- Drop down -->
-                <label for="categories"><span>Choose a category:</span></label>
-                <select name="category_id" id="categories">
-                    <option selected disabled>Select option </option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                @error('category_id')
-                    {{-- The $attributeValue field is/must be $validationRule --}}
-                    <p style="color: red; margin-bottom:25px;">{{ $message }}</p>
-                @enderror
+                    <form action="/post" method="post">
+                        @csrf
 
-                <!-- Body-->
-                <label for="body"><span>Body</span></label>
-                <textarea id="body" name="body">{{ old('body') }}</textarea>
-                @error('body')
-                    {{-- The $attributeValue field is/must be $validationRule --}}
-                    <p style="color: red; margin-bottom:25px;">{{ $message }}</p>
-                @enderror
-                <!-- Button -->
-                <input type="submit" value="Submit" />
-            </form>
+                        <div class="form-group">
+                            <label for="">Post Title</label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Post Description</label>
+                            <input type="text" name="description" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Post Body</label>
+                            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+                        </div>
+                        <!-- Drop down -->
+                        <div>
+                            <label for="categories"><span>Choose a category:</span></label>
+                            <select name="category_id" id="categories">
+                                <option selected disabled>Select option </option>
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Post Image</label>
+                            <input type="file" name="image" class="form-control">
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
+                </div>
+            </div>
         </div>
+    </div>
+</div>
 
-    </section>
-</main>
+
 @endsection

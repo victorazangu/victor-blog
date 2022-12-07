@@ -79,9 +79,9 @@ class PostController extends Controller
     }
 
     public function edit(Post $post){
-        if(auth()->user()->id !== $post->user->id){
-            abort(403);
-        }
+        // if(auth()->user()->id !== $post->user->id){
+        //     abort(403);
+        // }
         return view('posts.edit', compact('post'));
     }
 
