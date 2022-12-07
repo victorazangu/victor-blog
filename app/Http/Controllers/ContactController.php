@@ -22,9 +22,9 @@ class ContactController extends Controller
             'message' => 'required'
         ]);
 
-        Mail::to('alphayowakarindi@gmail.com')->send(new Contact($data));
-        
-        
+        Mail::to('victorazangu@gmail.com')->send(new Contact($data));
+
+
 
 
         return redirect(route('contact.index'))->with('status', "Thank you, we'll be in touch soon");
