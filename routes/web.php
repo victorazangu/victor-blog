@@ -27,6 +27,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome.index');
 // To blog page
 Route::get('/blog', [BlogController::class, 'index'])->name('post.index');
 
+
 // To create blog post
 Route::get('/blog/create', [BlogController::class, 'create'])->name('post.create');
 
