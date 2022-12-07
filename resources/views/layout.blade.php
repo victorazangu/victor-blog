@@ -29,7 +29,7 @@
     <div class="dl-fixed-sidebar dl-sidebar-left">
         <div class="dl-header-container">
             <div class="logo">
-                {{-- <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2> --}}
+                <h2> {{ Auth::user()->first_name }} {{ Auth::user()->second_name }}</h2>
             </div>
             <div class="dl-burger-menu">
                 <div class="dl-line-menu dl-line-half dl-first-line"></div>
@@ -53,7 +53,6 @@
                     @auth
                     <li><a class="{{ Request::routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li><a class="{{ Request::routeIs('profile.update') ? 'active' : '' }}" href="{{ route('profile.update') }}">Settings</a></li>
-                    <li><a class="{{ Request::routeIs('password.reset') ? 'active' : '' }}" href="{{ route('password.reset') }}">Reset Password</a></li>
                     <li><a class="{{ Request::routeIs('logout') ? 'active' : '' }}" href="{{ route('logout') }}">Log out</a></li>
                     @endauth
 
