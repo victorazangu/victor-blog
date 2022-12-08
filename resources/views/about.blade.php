@@ -31,7 +31,7 @@
                                     <li><span>Email</span> <a href="mailto:victorsazangu@gmail.com">victorsazangu@gmail.com</a></li>
                                     <li><span>Phone</span> <a href="tel:+254726262033">+254726262033</a></li>
                                 </ul>
-                                <a href="CV/CURRICULUM VITAE VICTOR (1).pdf" class="default-btn" download>Download CV <i class="ti-download"></i></a>
+                                <a href="https://docs.google.com/document/d/1H35uJCUEn4Peh5dbudzPDrL1Ybx4Zkdf/edit?usp=sharing&ouid=106891562225904113106&rtpof=true&sd=true" class="default-btn" download>Download CV <i class="ti-download"></i></a>
                             </div>
                         </div>
                         <div class="col-md-5 sm-padding wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1000ms">
