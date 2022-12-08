@@ -33,7 +33,7 @@ Route::get('/post', [PostController::class, 'index'])->name('post.index');
 
 
 // To create blog post
-Route::post('/post/create', [PostController::class, 'create'])->name('post.create');
+Route::get('/post/create', [PostController::class, 'create'])->name('post.create');
 
 // To single blog post
 Route::get('/post/{post:slug}', [PostController::class, 'show'])->name('post.show');

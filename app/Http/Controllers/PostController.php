@@ -35,6 +35,11 @@ class PostController extends Controller
 
 
     }
+
+    public function create(){
+        $categories = Category::all();
+        return view('posts.create', compact('categories'));
+    }
     public function store(Request $request){
 
        $request->validate([
@@ -73,7 +78,7 @@ class PostController extends Controller
 
        $post->save();
 
-       return redirect()->back()->with('status', 'Post Created Successfully');
+       return redirect('/blog')->with('status', 'Post Created Successfully');
     }
 
     public function edit(Post $post){

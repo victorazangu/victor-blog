@@ -1,17 +1,52 @@
-@extends('app-layout')
-
+@extends('layout')
 @section('header')
-<!-- header -->
-{{-- <header class="header text-cen" style=" background-image: url({{asset("images/photography.jpg")}});height:70%;width:80%"> --}}
-<div class="header-text">
-    <h1>Victor Blog</h1>
-    <h4>Dashboard of verified news...</h4>
-</div>
-<div class="overlay"></div>
-{{-- </header>  --}}
 
+<nav class="navbar navbar-expand-lg navbar-dark text-light bg-dark">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" aria-label="Search" name="search" placeholder="Search...">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="row">
+                <div class="col">
+                    <h3 class="text-light m-2 p-1">Categories:</h3>
+                </div>
+            </div>
+            <div class="row">
+
+                <li class="nav-item ">
+                    @foreach ($categories as $category)
+                <li><a class="btn-outline-light m-2 p-1" href="{{route('post.index', ['category' => $category->name ])}}">{{ $category->name }}</a></li>
+                @endforeach
+
+
+            </div>
+
+
+    </div>
+</nav>
+{{-- <main class="container">
+    <h2 class="header-title">All Blog Posts</h2>
+   @include('includes.flash-message')
+    <div class="searchbar">
+        <form action="">
+            <input type="text" placeholder="Search..." name="search" />
+
+            <button type="submit">
+                <i class="fa fa-search"></i>
+            </button>
+
+        </form>
+    </div>
+    <div class="categories">
+        <ul>
+            @foreach ($categories as $category)
+                <li><a href="{{route('post.index', ['category' => $category->name ])}}">{{ $category->name }}</a></li>
+@endforeach
+</ul>
+</div> --}}
 @endsection
-
 @section('main')
 <!-- main -->
 
@@ -30,14 +65,19 @@
         </div>
         @endif
         @endauth
-        <img src="{{ asset($post->imagePath) }}" alt="" />
+        <h4 class="text-center">
+            <a href="{{ route('post.show', $post) }}">{{ $post->title }}</a>
+        </h4>
+        <a href="{{ route('post.show', $post) }}">
+            <img src="{{ asset($post->imagePath) }}" alt="" />
+        </a>
         <p>
             {{ $post->created_at->diffForHumans() }}
             <span>Written By {{ $post->user->name }}</span>
         </p>
-        <h4>
-            <a href="{{ route('post.show', $post) }}">{{ $post->title }}</a>
-        </h4>
+
+        <p>{{ $post->description }}</p>
+
     </div>
     @empty
     <p>Sorry, currently there is no blog post related to that search!</p>
@@ -45,9 +85,11 @@
 
 </section>
 <!-- pagination -->
+<div class="text-center">
+    {{ $posts->links('pagination::default') }}
+</div>
 
-{{ $posts->links('pagination::default') }}
+
 
 <br>
-
 @endsection

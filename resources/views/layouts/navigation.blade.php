@@ -34,7 +34,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('post.store')">
+                        <x-dropdown-link :href="route('post.create')">
                             {{ __('Create Project') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('categories.create')">

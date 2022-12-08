@@ -923,6 +923,17 @@ footer small {
   padding: 10px 20px;
   display: inline-block;
 }
+.card-img-top{
+    max-width: 80%;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-text{
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .create-categories a,
 .index-categories a {

@@ -65,14 +65,16 @@
         </div>
         @endif
         @endauth
-        <img src="{{ asset($post->imagePath) }}" alt="" />
+        <h4>
+            <a class="text-center" href="{{ route('post.show', $post) }}">{{ $post->title }}</a>
+        </h4>
+        <img class="text-center" src="{{ asset($post->imagePath) }}" alt="" />
         <p>
-            {{ $post->created_at->diffForHumans() }}
+           Published: {{ $post->created_at->diffForHumans() }}
             <span>Written By {{ $post->user->name }}</span>
         </p>
-        <h4>
-            <a href="{{ route('post.show', $post) }}">{{ $post->title }}</a>
-        </h4>
+        <p class="text-center">{{ $post->description }}</p>
+
     </div>
     @empty
     <p>Sorry, currently there is no blog post related to that search!</p>
@@ -81,7 +83,11 @@
 </section>
 <!-- pagination -->
 
-{{ $posts->links('pagination::default') }}
+<div class="text-center">
+    {{ $posts->links('pagination::default') }}
+</div>
+
+
 
 <br>
 @endsection
