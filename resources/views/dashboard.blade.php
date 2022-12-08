@@ -19,6 +19,7 @@
                 </div>
             </div>
         </div>
+        <a href="{{route('post.create')}}">Create Post</a>
     </div>
 </x-app-layout>
 

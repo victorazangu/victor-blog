@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                        <img src="{{ asset('img/Artboard 3.png') }}" alt="" style="width: 75px;height:75px">
                     </a>
                 </div>
 
@@ -34,6 +34,16 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <x-dropdown-link :href="route('post.store')">
+                            {{ __('Create Project') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('categories.create')">
+                            {{ __('Create Category') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('categories.index')">
+                            {{ __('List category') }}
+                        </x-dropdown-link>
+
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>

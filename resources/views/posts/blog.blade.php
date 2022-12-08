@@ -82,5 +82,6 @@
 <!-- pagination -->
 
 {{ $posts->links('pagination::default') }}
+
 <br>
 @endsection
