@@ -113,7 +113,7 @@
                             <a href="https://www.instagram.com/v.azangu/?hl=en" target="_blank"><i class="ti-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/victor-shem-7a13821a3/" target="_blank"><i class="ti-linkedin"></i></a>
                             <a href="https://github.com/victorazangu" target="_blank"><i class="ti-github"></i></a>
-                            <a href="https://github.com/victorazangu" target="_blank"><i class="ti-github"></i></a>
+                            <a href="mailto:https:victorsazangu@gmail.com" target="_blank"><i class="ti-email"></i></a>
 
 
 
