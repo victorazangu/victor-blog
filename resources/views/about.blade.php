@@ -27,7 +27,6 @@
                                <h2>Let Me Introduce Myself.</h2>
                                 <p>I love to work in User Experience & User Interface designing. Because I love to solve the design problem and find easy and better solutions to solve it. I always try my best to make good user interface with the best user experience.</p>
                                 <ul class="profile-info">
-                                    <li><span>Full Name</span> Victor Azangu</li>
                                     <li><span>Address</span> TRM drive,Roysambu. Nairobi, Kenya</li>
                                     <li><span>Email</span> <a href="mailto:victorsazangu@gmail.com">victorsazangu@gmail.com</a></li>
                                     <li><span>Phone</span> <a href="tel:+254726262033">+254726262033</a></li>
@@ -37,7 +36,7 @@
                         </div>
                         <div class="col-md-5 sm-padding wow fadeInRight" data-wow-delay="200ms" data-wow-duration="1000ms">
                             <div class="about-bg">
-                               <img src="img/victor2.jpg" alt="img" style="border-radius: 9px">
+                               <img src="{{ asset('img/profile.png') }}" alt="img" style="border-radius: 9px">
                                <div class="dots" style="color:#cba982"></div>
                             </div>
                         </div>

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        $posts = Post::latest()->take(4)->get();
+        $posts = Post::latest()->paginate(6);
         return view('welcome', compact('posts'));
     }
 }
