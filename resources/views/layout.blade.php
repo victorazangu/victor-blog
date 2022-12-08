@@ -39,7 +39,7 @@
                 <div class="dl-line-menu"></div>
                 <div class="dl-line-menu dl-line-half dl-last-line"></div>
             </div>
-            <nav class="dl-menu-fixed">
+            <nav class="dl-menu-fixed mb-3 pb-3">
                 <ul>
 
                     <li><a class="{{ Request::routeIs('welcome.index') ? 'active' : '' }}" href="{{ route('welcome.index') }}">Home</a></li>
@@ -82,10 +82,25 @@
             </div>
         </div>
     </div>
+    <script>
+        document
+            .querySelector(".menuButton")
+            .addEventListener("click", function() {
+                document.querySelector(".sidebar").style.width = "100%";
+                document.querySelector(".sidebar").style.zIndex = "5";
+            });
+
+        document
+            .querySelector(".closeButton")
+            .addEventListener("click", function() {
+                document.querySelector(".sidebar").style.width = "0";
+            });
+    </script>
+    @yield('scripts')
 
 
 
-        <footer class="footer-section">
+        <footer class="footer-section mt-auto p-2 bd-highlight" >
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
@@ -98,6 +113,11 @@
                             <a href="https://www.instagram.com/v.azangu/?hl=en" target="_blank"><i class="ti-instagram"></i></a>
                             <a href="https://www.linkedin.com/in/victor-shem-7a13821a3/" target="_blank"><i class="ti-linkedin"></i></a>
                             <a href="https://github.com/victorazangu" target="_blank"><i class="ti-github"></i></a>
+                            <a href="https://github.com/victorazangu" target="_blank"><i class="ti-github"></i></a>
+
+
+
+
                         </div>
                     </div>
                 </div>

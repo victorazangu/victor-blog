@@ -19,21 +19,22 @@
                     </div>
                     @endif
 
-                    <form action="/post" method="post">
+                    <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="form-group">
                             <label for="">Post Title</label>
-                            <input type="text" name="title" class="form-control">
+                            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                         </div>
                         <div class="form-group">
                             <label for="">Post Description</label>
-                            <input type="text" name="description" class="form-control">
+                            <input type="text" name="description" class="form-control" value="{{ old('description') }}">
                         </div>
+
 
                         <div class="form-group">
                             <label for="">Post Body</label>
-                            <textarea name="body" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="body" id="" cols="30" rows="10" class="form-control">{{ old('body') }}</textarea>
                         </div>
                         <!-- Drop down -->
                         <div>
@@ -48,11 +49,10 @@
 
                         <div class="form-group">
                             <label for="">Post Image</label>
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" name="imagePath" class="form-control">
                         </div>
 
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input  class="btn btn-primary" type="submit" value="Submit" />
                     </form>
 
                 </div>
@@ -61,5 +61,10 @@
     </div>
 </div>
 
+@endsection
 
+@section('scripts')
+    <script>
+        CKEDITOR.replace('body');
+    </script>
 @endsection

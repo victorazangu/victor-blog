@@ -76,10 +76,25 @@
         </header>
 
 
-       
+
                 @yield('main')
 
     </div>
+    <script>
+        document
+            .querySelector(".menuButton")
+            .addEventListener("click", function() {
+                document.querySelector(".sidebar").style.width = "100%";
+                document.querySelector(".sidebar").style.zIndex = "5";
+            });
+
+        document
+            .querySelector(".closeButton")
+            .addEventListener("click", function() {
+                document.querySelector(".sidebar").style.width = "0";
+            });
+    </script>
+    @yield('scripts')
 
 
 
