@@ -54,13 +54,13 @@ class PostController extends Controller
        $description = $request->input('description');
        $category_id = $request->input('category_id');
 
-       if(Post::latest()->first() !== null){
-        $postId = Post::latest()->first()->id + 1;
-       } else{
-           $postId = 1;
-       }
+//       if(Post::latest()->first() !== null){
+//        $postId = Post::latest()->first()->id + 1;
+//       } else{
+//           $postId = 1;
+//       }
 
-       $slug = Str::slug($title, '-') . '-' . $postId;
+       $slug = Str::slug($title, '-') . '-' . auth()->user()->id . auth()->user()->name;
        $user_id = Auth::user()->id;
        $body = $request->input('body');
 
